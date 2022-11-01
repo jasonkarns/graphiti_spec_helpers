@@ -15,5 +15,5 @@ jobs:
       - run: bundle exec rake build
       - run: gem push pkg/*.gem
         env:
-          GEM_HOST_API_KEY: ${{github.token}}
+          GEM_HOST_API_KEY: Bearer ${{github.token}}
           RUBYGEMS_HOST: https://rubygems.pkg.github.com/${{github.repository_owner}}
