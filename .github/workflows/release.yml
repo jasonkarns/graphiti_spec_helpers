@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  gem:
+  github:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,6 +13,7 @@ jobs:
           bundler-cache: true
           ruby-version: 3.1
       - run: bundle exec rake build
-      - run: gem push --key github pkg/*.gem
-        env:
-          RUBYGEMS_HOST: https://rubygems.pkg.github.com/${{github.repository_owner}}
+      - run: >
+          gem push --key github
+          --host https://rubygems.pkg.github.com/${{github.repository_owner}}
+          pkg/*.gem
