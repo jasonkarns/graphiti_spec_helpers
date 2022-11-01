@@ -1,0 +1,12 @@
+name: Release
+on:
+  push: # { tags: v* }
+  workflow_dispatch:
+
+jobs:
+  gem:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: bundle install
+      - run: rake build
