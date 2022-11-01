@@ -13,3 +13,6 @@ jobs:
           bundler-cache: true
           ruby-version: 3.1
       - run: bundle exec rake build
+      - run: gem push --key github pkg/*.gem
+        env:
+          RUBYGEMS_HOST: https://rubygems.pkg.github.com/${github.repository_owner}
